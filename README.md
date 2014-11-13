@@ -16,23 +16,24 @@ How It Works
 ------------
 
 This project encodes a Spring MVC webapp that contains two packages: `edu.ncsu.lib` contains
-code and resources that represent the base web application, along with all of the assets (`web.xml`
-and base Spring context files.
+code and resources that represent the base web application, along with all of the traditional configuration files in `WEB-INF`.
 
 The Java classes and resources in the `com.example.plugin` package represent the "foreign" code
 of the plugin.  Notionally, this code could be contained in a separate JAR that is dropped into
 the `WEB-INF/lib` directory of the parent WAR file (this is, in fact, the intended use case).
 
-
 Running the demo
 ----------------
-`$ mvn clean package`
-`$ cp target/plugin-test-0.1-SNAPSHOT.war $TOMCAT_HOME/webapps/ROOT.war`
+```
+$ mvn clean package
+$ cp target/plugin-test-0.1-SNAPSHOT.war $TOMCAT_HOME/webapps/ROOT.war
+```
+
 ( start tomcat )
-( browse to http://localhost:8080 )
+( browse to `http://localhost:8080` )
 ( click on the link  )
 
-If the subsquent page reads "you have been served (by a plugin)", it means the demo was successful -- the
+If the subsquent page reads `you have been served (by a plugin)`, it means the demo was successful -- the
 page at http://localhost:8080/plugin is served by a Spring MVC controller that was added by the plugin.
 
 Actually, other tests are taking place behind the scenes (e.g the plugin code tries to access beans defined
