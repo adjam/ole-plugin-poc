@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by adamc on 11/12/14.
@@ -34,8 +35,8 @@ public class DefaultController {
     public HttpEntity<String> getIndex() {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "text/html");
-        try {
-            String content = IOUtils.toString(pageResource.getInputStream(), "utf-8");
+        try(InputStream input = pageResource.getInputStream() ) {
+            String content = IOUtils.toString(input, "utf-8");
             return new HttpEntity<String>(content, headers);
         } catch( IOException iox ) {
             throw new RuntimeException("argh", iox);
