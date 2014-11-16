@@ -16,8 +16,7 @@ How It Works
 ------------
 
 This project encodes a Spring MVC webapp that contains two packages: `edu.ncsu.lib` contains
-code and resources that represent the base web application, along with all of the assets (`web.xml`
-and base Spring context files.
+code and resources that represent the base web application, along with all of the traditional configuration files in `WEB-INF`.
 
 The Java classes and resources in the `com.example.plugin` package represent the "foreign" code
 of the plugin.  Notionally, this code could be contained in a separate JAR that is dropped into
@@ -25,6 +24,7 @@ the `WEB-INF/lib` directory of the parent WAR file (this is, in fact, the intend
 
 Running the demo
 ----------------
+<<<<<<< HEAD
 `$ mvn tomcat7:run`
 ( browse to http://localhost:8080 )
 ( click on the link  )
@@ -33,6 +33,19 @@ If the subsquent page reads "you have been served (by a plugin)", and shows some
 it means the demo was successful -- the page at http://localhost:8080/plugin is served by a
 Spring MVC controller that was added by the `<import resources="classpath*:**/pluginConfig.xml />` element
 in the MVC context's XML file (`WEB-INF/plugin-test-servlet.xml`).
+=======
+```
+$ mvn clean package
+$ cp target/plugin-test-0.1-SNAPSHOT.war $TOMCAT_HOME/webapps/ROOT.war
+```
+
+( start tomcat )
+( browse to `http://localhost:8080` )
+( click on the link  )
+
+If the subsquent page reads `you have been served (by a plugin)`, it means the demo was successful -- the
+page at http://localhost:8080/plugin is served by a Spring MVC controller that was added by the plugin.
+>>>>>>> 4a48fdd53313ea41c1bcf4475198c5efc248b53b
 
 Actually, other tests are taking place behind the scenes (e.g the plugin code tries to access beans defined
 in the parent app's Spring context and use them; if any of this fails, the plugin will not load successfully.)
