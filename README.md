@@ -24,28 +24,14 @@ the `WEB-INF/lib` directory of the parent WAR file (this is, in fact, the intend
 
 Running the demo
 ----------------
-<<<<<<< HEAD
 `$ mvn tomcat7:run`
 ( browse to http://localhost:8080 )
 ( click on the link  )
 
-If the subsquent page reads "you have been served (by a plugin)", and shows some sample data,
+If the subsequent page reads "you have been served (by a plugin)", and shows some sample data,
 it means the demo was successful -- the page at http://localhost:8080/plugin is served by a
 Spring MVC controller that was added by the `<import resources="classpath*:**/pluginConfig.xml />` element
 in the MVC context's XML file (`WEB-INF/plugin-test-servlet.xml`).
-=======
-```
-$ mvn clean package
-$ cp target/plugin-test-0.1-SNAPSHOT.war $TOMCAT_HOME/webapps/ROOT.war
-```
-
-( start tomcat )
-( browse to `http://localhost:8080` )
-( click on the link  )
-
-If the subsquent page reads `you have been served (by a plugin)`, it means the demo was successful -- the
-page at http://localhost:8080/plugin is served by a Spring MVC controller that was added by the plugin.
->>>>>>> 4a48fdd53313ea41c1bcf4475198c5efc248b53b
 
 Actually, other tests are taking place behind the scenes (e.g the plugin code tries to access beans defined
 in the parent app's Spring context and use them; if any of this fails, the plugin will not load successfully.)
@@ -53,6 +39,6 @@ in the parent app's Spring context and use them; if any of this fails, the plugi
 License
 -------
 
-This is a demonstration, and not really useful in its current state.  It is intended to
+This is a demonstration, and uses basic Spring features to achieve its goal.  It is intended to
 serve as inspiration, and not as something one would directly build upon.  That said, it is provided
 under the GNU GPL v3. License and is copyright 2014 North Carolina State University.
