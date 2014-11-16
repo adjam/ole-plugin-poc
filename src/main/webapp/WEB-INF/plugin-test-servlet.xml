@@ -9,5 +9,11 @@
     <mvc:annotation-driven />
     <context:component-scan base-package="edu.ncsu.lib" />
 
-    <bean id="pluginLoader" class="edu.ncsu.lib.initializer.PluginLoader"/>
+
+    <!-- Loads any Spring bean definitions in plugin JARS, as long as those files are named "pluginConfig.xml
+         For clarity, it is best to give each plugin its own characteristic package and put the above file
+               in that package. -->
+
+    <import resource="classpath*:**/pluginConfig.xml"/>
+
 </beans>

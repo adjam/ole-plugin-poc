@@ -12,8 +12,10 @@
                       value="This comes from the parent context"/>
        </bean>
 
+    <!-- ; DB_CLOSE_DELAY=-1 prevents database from being shut down after connection is closed,
+     making the in-memory database act more like a persistent one -->
     <bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource"
-            p:URL="jdbc:h2:mem:"
+            p:URL="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"
             p:user="sa"
             p:password="" />
 
