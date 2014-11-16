@@ -1,12 +1,12 @@
 OLE Plugin Configuration Proof-Of-Concept
 ==========================================
 
-Contains a demonstration of how to implement a plugin for a Spring-configured
-web application.
+Contains a demonstration of how to implement a plugin for a Spring-configured web application.
 
 This project includes both a complete (if tiny) Spring MVC web application and includes,
  alongside that, code in a different (Java) package that adds functionality to the base
- MVC application.
+ MVC application.  Pretend that the code and resources in these packages are in different JAR
+ files.
 
 The aim is to illustrate how, with minor modifications, medium to large web applications
 could support plugin functionality, allowing different development teams to add or
@@ -23,17 +23,16 @@ The Java classes and resources in the `com.example.plugin` package represent the
 of the plugin.  Notionally, this code could be contained in a separate JAR that is dropped into
 the `WEB-INF/lib` directory of the parent WAR file (this is, in fact, the intended use case).
 
-
 Running the demo
 ----------------
-`$ mvn clean package`
-`$ cp target/plugin-test-0.1-SNAPSHOT.war $TOMCAT_HOME/webapps/ROOT.war`
-( start tomcat )
+`$ mvn tomcat7:run`
 ( browse to http://localhost:8080 )
 ( click on the link  )
 
-If the subsquent page reads "you have been served (by a plugin)", it means the demo was successful -- the
-page at http://localhost:8080/plugin is served by a Spring MVC controller that was added by the plugin.
+If the subsquent page reads "you have been served (by a plugin)", and shows some sample data,
+it means the demo was successful -- the page at http://localhost:8080/plugin is served by a
+Spring MVC controller that was added by the `<import resources="classpath*:**/pluginConfig.xml />` element
+in the MVC context's XML file (`WEB-INF/plugin-test-servlet.xml`).
 
 Actually, other tests are taking place behind the scenes (e.g the plugin code tries to access beans defined
 in the parent app's Spring context and use them; if any of this fails, the plugin will not load successfully.)
